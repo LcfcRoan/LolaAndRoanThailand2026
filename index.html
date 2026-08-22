@@ -69,64 +69,32 @@
     margin: 0.4rem 0 0.2rem;
   }
 
-  /* ---------- Route strip (signature element) ---------- */
-  .route {
-    display: flex;
-    overflow-x: auto;
-    gap: 0;
-    background: var(--ink);
-    padding: 1.1rem 1rem;
-  }
-  .route::-webkit-scrollbar { display: none; }
-  .stop {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    color: #B9C2C6;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.78rem;
-    white-space: nowrap;
-    padding: 0 0.9rem;
-  }
-  .stop .num {
-    color: var(--marigold);
-    margin-right: 0.4rem;
-  }
-  .stop:not(:last-child)::after {
-    content: '···';
-    color: #5B6B72;
-    margin-left: 0.9rem;
-  }
-
-  /* ---------- Location sections ---------- */
+  /* ---------- Location sections (photo fills the whole section) ---------- */
   .location {
-    padding: 2.6rem 1.2rem 1rem;
+    background-size: cover;
+    background-position: center;
+    padding: 2.2rem 1.2rem 2.4rem;
+  }
+  .location.bangkok   { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--bangkok-photo), linear-gradient(135deg, var(--ink), #24404A); }
+  .location.chiangmai { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--chiangmai-photo), linear-gradient(135deg, var(--jungle), #24402F); }
+  .location.chiangrai { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--chiangrai-photo), linear-gradient(135deg, #2B4A63, var(--ink)); }
+  .location.samui     { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--samui-photo), linear-gradient(135deg, var(--coral), #7A3324); }
+  .location.phangan   { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--phangan-photo), linear-gradient(135deg, #1F3B3A, var(--ink)); }
+
+  .location-inner {
     max-width: 46rem;
     margin: 0 auto;
   }
   .location-header {
-    border-radius: 10px;
-    background-size: cover;
-    background-position: center;
-    padding: 1.6rem 1.4rem;
-    margin-bottom: 1.4rem;
+    padding: 0.2rem 0 1.4rem;
     color: var(--paper);
-    position: relative;
   }
-  .location-header.bangkok   { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), var(--bangkok-photo), linear-gradient(135deg, var(--ink), #24404A); }
-  .location-header.chiangmai { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), var(--chiangmai-photo), linear-gradient(135deg, var(--jungle), #24402F); }
-  .location-header.chiangrai { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), var(--chiangrai-photo), linear-gradient(135deg, #2B4A63, var(--ink)); }
-  .location-header.samui     { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), var(--samui-photo), linear-gradient(135deg, var(--coral), #7A3324); }
-  .location-header.phangan   { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), var(--phangan-photo), linear-gradient(135deg, #1F3B3A, var(--ink)); }
-
   .location-header .eyebrow { color: var(--marigold); }
   .location-header h2 { font-size: 1.6rem; font-weight: 600; margin-top: 0.2rem; }
 
   /* ---------- Tape cards ---------- */
   .tape {
     background: #fff;
-    border: 1px solid #E3D9C4;
-    border-left: 4px solid var(--jungle);
     border-radius: 6px;
     padding: 0.9rem 1rem;
     margin-bottom: 0.7rem;
@@ -163,17 +131,10 @@
   <h1>Happy Birthday, Lola ❤️</h1>
 </section>
 
-<nav class="route" aria-label="Trip route">
-  <span class="stop"><span class="num">1</span>Bangkok</span>
-  <span class="stop"><span class="num">2</span>Chiang Mai</span>
-  <span class="stop"><span class="num">3</span>Chiang Rai</span>
-  <span class="stop"><span class="num">4</span>Koh Samui</span>
-  <span class="stop"><span class="num">5</span>Koh Pha-Ngan</span>
-</nav>
-
 <!-- ============ BANGKOK ============ -->
-<section class="location">
-  <div class="location-header bangkok">
+<section class="location bangkok">
+ <div class="location-inner">
+  <div class="location-header">
     <div class="eyebrow">Stop 1</div>
     <h2>Bangkok</h2>
   </div>
@@ -186,11 +147,13 @@
   <div class="tape"><h3>Si Lom BTS Station</h3><audio controls src="Si Lom metro station.m4a"></audio></div>
   <div class="tape"><h3>The Sky Train</h3><audio controls src="Sky Train.m4a"></audio></div>
   <div class="tape"><h3>Wat Arun, Temple of Dawn</h3><audio controls src="Wat Arun.m4a"></audio></div>
+ </div>
 </section>
 
 <!-- ============ CHIANG MAI ============ -->
-<section class="location">
-  <div class="location-header chiangmai">
+<section class="location chiangmai">
+ <div class="location-inner">
+  <div class="location-header">
     <div class="eyebrow">Stop 2</div>
     <h2>Chiang Mai</h2>
   </div>
@@ -209,11 +172,13 @@
   <div class="tape"><h3>Songthaew Ride</h3><audio controls src="Songthaew.m4a"></audio></div>
   <div class="tape"><h3>Songthaew, Another Ride</h3><audio controls src="Somgthaew.m4a"></audio></div>
   <div class="tape"><h3>Street Market</h3><audio controls src="Street market.m4a"></audio></div>
+ </div>
 </section>
 
 <!-- ============ CHIANG RAI ============ -->
-<section class="location">
-  <div class="location-header chiangrai">
+<section class="location chiangrai">
+ <div class="location-inner">
+  <div class="location-header">
     <div class="eyebrow">Stop 3</div>
     <h2>Chiang Rai</h2>
   </div>
@@ -225,11 +190,13 @@
   <div class="tape"><h3>Chiang Rai, from the Balcony</h3><audio controls src="Chiang Rai balcony.m4a"></audio></div>
   <div class="tape"><h3>Market Square — a Guitar Playing</h3><audio controls src="Chiang rai market square with guitar.m4a"></audio></div>
   <div class="tape"><h3>Hey Jude, Chiang Rai</h3><audio controls src="Hey Jude chiang rai.m4a"></audio></div>
+ </div>
 </section>
 
 <!-- ============ KOH SAMUI ============ -->
-<section class="location">
-  <div class="location-header samui">
+<section class="location samui">
+ <div class="location-inner">
+  <div class="location-header">
     <div class="eyebrow">Stop 4</div>
     <h2>Koh Samui</h2>
   </div>
@@ -241,11 +208,13 @@
   <div class="tape"><h3>Fisherman's Village Market</h3><audio controls src="Fisherman's village market.m4a"></audio></div>
   <div class="tape"><h3>The Ferry Over</h3><audio controls src="Ferry.m4a"></audio></div>
   <div class="tape"><h3>The Ferry Over II</h3><audio controls src="Ferry 2.m4a"></audio></div>
+ </div>
 </section>
 
 <!-- ============ KOH PHA-NGAN ============ -->
-<section class="location">
-  <div class="location-header phangan">
+<section class="location phangan">
+ <div class="location-inner">
+  <div class="location-header">
     <div class="eyebrow">Stop 5</div>
     <h2>Koh Pha-Ngan</h2>
   </div>
@@ -255,6 +224,7 @@
   <div class="tape"><h3>Koh Pha-Ngan Beach</h3><audio controls src="Koh Pha-Ngan beach.m4a"></audio></div>
   <div class="tape"><h3>Late Night</h3><audio controls src="Late night Koh Pha-Ngan.m4a"></audio></div>
   <div class="tape"><h3>Wires Buzzing Overhead</h3><audio controls src="Wires buzzing Koh Pha-Ngan.m4a"></audio></div>
+ </div>
 </section>
 
 <footer>Lola &amp; Roan · Thailand · June 2026</footer>
