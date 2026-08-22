@@ -1,20 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lola & Roan — Thailand 2026</title>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lola & Roan — Thailand 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
 
+  /* ============================================================
+     PHOTOS — this is the only block you need to touch to add
+     images. Upload a .jpg to the repo (same way you uploaded the
+     audio), then set the url() below to that filename.
+     Leave any line as-is to keep the plain colour background.
+     ============================================================ */
+  :root {
+    --hero-photo:      url('IMG_4771.jpeg');
+    --bangkok-photo:   url('IMG_4563.jpeg');
+    --chiangmai-photo: url('IMG_4120.jpeg');
+    --chiangrai-photo: url('IMG_4920.jpeg');
+    --samui-photo:     url('IMG_5075.jpeg');
+    --phangan-photo:   url('IMG_5111.jpeg');
+  }
+
+  :root {
+    --ink: #1C2B36;
+    --marigold: #E8A33D;
+    --coral: #C9573F;
+    --paper: #F3ECDD;
+    --jungle: #3C5A48;
+    --charcoal: #2A2A28;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--charcoal);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+  }
+
+  h1, h2, h3 { font-family: 'Fraunces', serif; margin: 0; }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--marigold);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--hero-photo), linear-gradient(160deg, var(--ink), #0e161c);
+    background-size: cover;
+    background-position: center;
+    color: var(--paper);
+    padding: 4rem 1.5rem 3rem;
+    text-align: center;
+  }
+  .hero .eyebrow { color: var(--marigold); }
+  .hero h1 {
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 600;
+    margin: 0.4rem 0 0.2rem;
+  }
+
+  /* ---------- Route strip (signature element) ---------- */
+  .route {
+    display: flex;
+    overflow-x: auto;
+    gap: 0;
+    background: var(--ink);
+    padding: 1.1rem 1rem;
+  }
+  .route::-webkit-scrollbar { display: none; }
+  .stop {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    color: #B9C2C6;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    white-space: nowrap;
+    padding: 0 0.9rem;
+  }
+  .stop .num {
+    color: var(--marigold);
+    margin-right: 0.4rem;
+  }
+  .stop:not(:last-child)::after {
+    content: '···';
+    color: #5B6B72;
+    margin-left: 0.9rem;
+  }
+
+  /* ---------- Location sections ---------- */
+  .location {
+    padding: 2.6rem 1.2rem 1rem;
+    max-width: 46rem;
+    margin: 0 auto;
+  }
+  .location-header {
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    padding: 1.6rem 1.4rem;
+    margin-bottom: 1.4rem;
+    color: var(--paper);
+    position: relative;
+  }
+  .location-header.bangkok   { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), var(--bangkok-photo), linear-gradient(135deg, var(--ink), #24404A); }
+  .location-header.chiangmai { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), var(--chiangmai-photo), linear-gradient(135deg, var(--jungle), #24402F); }
+  .location-header.chiangrai { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), var(--chiangrai-photo), linear-gradient(135deg, #2B4A63, var(--ink)); }
+  .location-header.samui     { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), var(--samui-photo), linear-gradient(135deg, var(--coral), #7A3324); }
+  .location-header.phangan   { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), var(--phangan-photo), linear-gradient(135deg, #1F3B3A, var(--ink)); }
+
+  .location-header .eyebrow { color: var(--marigold); }
+  .location-header h2 { font-size: 1.6rem; font-weight: 600; margin-top: 0.2rem; }
+
+  /* ---------- Tape cards ---------- */
+  .tape {
+    background: #fff;
+    border: 1px solid #E3D9C4;
+    border-left: 4px solid var(--jungle);
+    border-radius: 6px;
+    padding: 0.9rem 1rem;
+    margin-bottom: 0.7rem;
+  }
+  .tape h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+  audio {
+    width: 100%;
+    height: 34px;
+  }
+
+  footer {
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: #7A7264;
+    padding: 2.5rem 1rem 3rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .route { scroll-behavior: auto; }
+  }
+</style>
+</head>
 <body>
 
-    <h1>Lola & Roan — Thailand 2026</h1>
+<section class="hero">
+  <div class="eyebrow">Thailand 2026</div>
+  <h1>Happy Birthday, Lola ❤️</h1>
+</section>
 
-    <p>Photographs, memories and sounds from our trip.</p>
+<nav class="route" aria-label="Trip route">
+  <span class="stop"><span class="num">1</span>Bangkok</span>
+  <span class="stop"><span class="num">2</span>Chiang Mai</span>
+  <span class="stop"><span class="num">3</span>Chiang Rai</span>
+  <span class="stop"><span class="num">4</span>Koh Samui</span>
+  <span class="stop"><span class="num">5</span>Koh Pha-Ngan</span>
+</nav>
 
-    <h2>🎧 Audio Archive</h2>
+<!-- ============ BANGKOK ============ -->
+<section class="location">
+  <div class="location-header bangkok">
+    <div class="eyebrow">Stop 1</div>
+    <h2>Bangkok</h2>
+  </div>
 
-    <p>Our recordings will appear here soon.</p>
+  <div class="tape"><h3>Bangkok Traffic</h3><audio controls src="Bangkok traffic.m4a"></audio></div>
+  <div class="tape"><h3>Ferry to IconSiam</h3><audio controls src="Iconsiam ferry.m4a"></audio></div>
+  <div class="tape"><h3>Lumpini Park</h3><audio controls src="Lumpini park.m4a"></audio></div>
+  <div class="tape"><h3>Muay Thai Match</h3><audio controls src="Muay thai.m4a"></audio></div>
+  <div class="tape"><h3>Muay Thai — Between Rounds</h3><audio controls src="Muay thai round.m4a"></audio></div>
+  <div class="tape"><h3>Si Lom BTS Station</h3><audio controls src="Si Lom metro station.m4a"></audio></div>
+  <div class="tape"><h3>The Sky Train</h3><audio controls src="Sky Train.m4a"></audio></div>
+  <div class="tape"><h3>Wat Arun, Temple of Dawn</h3><audio controls src="Wat Arun.m4a"></audio></div>
+</section>
+
+<!-- ============ CHIANG MAI ============ -->
+<section class="location">
+  <div class="location-header chiangmai">
+    <div class="eyebrow">Stop 2</div>
+    <h2>Chiang Mai</h2>
+  </div>
+
+  <div class="tape"><h3>Chanting at Wat Chedi Luang</h3><audio controls src="Chanting wat chedi.m4a"></audio></div>
+  <div class="tape"><h3>Wat Chedi Luang</h3><audio controls src="Wat Chedi.m4a"></audio></div>
+  <div class="tape"><h3>Thai Cooking Class</h3><audio controls src="Cooking class.m4a"></audio></div>
+  <div class="tape"><h3>Walking the Cooking School Grounds</h3><audio controls src="Walking around cooking class.m4a"></audio></div>
+  <div class="tape"><h3>Doi Suthep National Park</h3><audio controls src="Doi suthep national park.m4a"></audio></div>
+  <div class="tape"><h3>Wat Phra That Doi Suthep</h3><audio controls src="Wat Phra That Doi Suthep.m4a"></audio></div>
+  <div class="tape"><h3>Elephant Sanctuary</h3><audio controls src="Elephant park 4.m4a"></audio></div>
+  <div class="tape"><h3>Sunday Night Market</h3><audio controls src="Sunday night market.m4a"></audio></div>
+  <div class="tape"><h3>Sunday Market, from the Hotel Balcony</h3><audio controls src="Sunday night market from hotel.m4a"></audio></div>
+  <div class="tape"><h3>Thai Folk Band at the Market</h3><audio controls src="Thai folk band Chiang Mai Sunday night market.m4a"></audio></div>
+  <div class="tape"><h3>Wat Phra Singh</h3><audio controls src="Wat singh.m4a"></audio></div>
+  <div class="tape"><h3>Songthaew Ride</h3><audio controls src="Songthaew.m4a"></audio></div>
+  <div class="tape"><h3>Songthaew, Another Ride</h3><audio controls src="Somgthaew.m4a"></audio></div>
+  <div class="tape"><h3>Street Market</h3><audio controls src="Street market.m4a"></audio></div>
+</section>
+
+<!-- ============ CHIANG RAI ============ -->
+<section class="location">
+  <div class="location-header chiangrai">
+    <div class="eyebrow">Stop 3</div>
+    <h2>Chiang Rai</h2>
+  </div>
+
+  <div class="tape"><h3>The Blue Temple</h3><audio controls src="Blue temple.m4a"></audio></div>
+  <div class="tape"><h3>The Blue Temple II</h3><audio controls src="Blue temple 2.m4a"></audio></div>
+  <div class="tape"><h3>Blue Temple — the Statue</h3><audio controls src="Blue temple statue.m4a"></audio></div>
+  <div class="tape"><h3>Outside the Blue Temple</h3><audio controls src="Outside blue temple.m4a"></audio></div>
+  <div class="tape"><h3>Chiang Rai, from the Balcony</h3><audio controls src="Chiang Rai balcony.m4a"></audio></div>
+  <div class="tape"><h3>Market Square — a Guitar Playing</h3><audio controls src="Chiang rai market square with guitar.m4a"></audio></div>
+  <div class="tape"><h3>Hey Jude, Chiang Rai</h3><audio controls src="Hey Jude chiang rai.m4a"></audio></div>
+</section>
+
+<!-- ============ KOH SAMUI ============ -->
+<section class="location">
+  <div class="location-header samui">
+    <div class="eyebrow">Stop 4</div>
+    <h2>Koh Samui</h2>
+  </div>
+
+  <div class="tape"><h3>The Big Buddha</h3><audio controls src="Big Buddha.m4a"></audio></div>
+  <div class="tape"><h3>Bophut Beach</h3><audio controls src="Bophut beach.m4a"></audio></div>
+  <div class="tape"><h3>Bophut Beach II</h3><audio controls src="Bophut beach 2.m4a"></audio></div>
+  <div class="tape"><h3>Fisherman's Village by Day</h3><audio controls src="Fisherman's village daytime.m4a"></audio></div>
+  <div class="tape"><h3>Fisherman's Village Market</h3><audio controls src="Fisherman's village market.m4a"></audio></div>
+  <div class="tape"><h3>The Ferry Over</h3><audio controls src="Ferry.m4a"></audio></div>
+  <div class="tape"><h3>The Ferry Over II</h3><audio controls src="Ferry 2.m4a"></audio></div>
+</section>
+
+<!-- ============ KOH PHA-NGAN ============ -->
+<section class="location">
+  <div class="location-header phangan">
+    <div class="eyebrow">Stop 5</div>
+    <h2>Koh Pha-Ngan</h2>
+  </div>
+
+  <div class="tape"><h3>Crickets at Night</h3><audio controls src="Crickets Koh Pha-Ngan.m4a"></audio></div>
+  <div class="tape"><h3>Jungle Animal Calls</h3><audio controls src="Koh Pha-Ngan animal sound.m4a"></audio></div>
+  <div class="tape"><h3>Koh Pha-Ngan Beach</h3><audio controls src="Koh Pha-Ngan beach.m4a"></audio></div>
+  <div class="tape"><h3>Late Night</h3><audio controls src="Late night Koh Pha-Ngan.m4a"></audio></div>
+  <div class="tape"><h3>Wires Buzzing Overhead</h3><audio controls src="Wires buzzing Koh Pha-Ngan.m4a"></audio></div>
+</section>
+
+<footer>Lola &amp; Roan · Thailand · June 2026</footer>
 
 </body>
 </html>
