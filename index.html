@@ -69,28 +69,43 @@
     margin: 0.4rem 0 0.2rem;
   }
 
-  /* ---------- Location sections (photo fills the whole section) ---------- */
+  /* ---------- Location sections (photos crossfade into one another) ---------- */
   .location {
     position: relative;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
     padding: 2.2rem 1.2rem 2.4rem;
   }
-  .location + .location::before {
+  .location::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 160px;
-    background: linear-gradient(to bottom, var(--ink) 0%, rgba(28,43,54,0) 100%);
-    z-index: 1;
-    pointer-events: none;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
   }
-  .location.bangkok   { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--bangkok-photo), linear-gradient(135deg, var(--ink), #24404A); }
-  .location.chiangmai { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--chiangmai-photo), linear-gradient(135deg, var(--jungle), #24402F); }
-  .location.chiangrai { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--chiangrai-photo), linear-gradient(135deg, #2B4A63, var(--ink)); }
-  .location.samui     { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--samui-photo), linear-gradient(135deg, var(--coral), #7A3324); }
-  .location.phangan   { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--phangan-photo), linear-gradient(135deg, #1F3B3A, var(--ink)); }
+  .location::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+  }
+  .location.bangkok::before   { background-image: var(--bangkok-photo), linear-gradient(135deg, var(--ink), #24404A); }
+  .location.chiangmai::before { background-image: var(--chiangmai-photo), linear-gradient(135deg, var(--jungle), #24402F); }
+  .location.chiangrai::before { background-image: var(--chiangrai-photo), linear-gradient(135deg, #2B4A63, var(--ink)); }
+  .location.samui::before     { background-image: var(--samui-photo), linear-gradient(135deg, var(--coral), #7A3324); }
+  .location.phangan::before   { background-image: var(--phangan-photo), linear-gradient(135deg, #1F3B3A, var(--ink)); }
+
+  /* Overlap each section onto the one before it, and fade its own photo in
+     from transparent across that overlap zone, so the previous photo shows
+     through underneath and dissolves into the new one. */
+  .location + .location {
+    margin-top: -160px;
+    padding-top: 3.6rem;
+  }
+  .location + .location::before {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 200px);
+            mask-image: linear-gradient(to bottom, transparent 0, #000 200px);
+  }
 
   .location-inner {
     position: relative;
@@ -156,10 +171,12 @@
   <div class="tape"><h3>Ferry to IconSiam</h3><audio controls src="Iconsiam ferry.m4a"></audio></div>
   <div class="tape"><h3>Lumpini Park</h3><audio controls src="Lumpini park.m4a"></audio></div>
   <div class="tape"><h3>Muay Thai Match</h3><audio controls src="Muay thai.m4a"></audio></div>
-  <div class="tape"><h3>Muay Thai — Between Rounds</h3><audio controls src="Muay thai round.m4a"></audio></div>
-  <div class="tape"><h3>Si Lom BTS Station</h3><audio controls src="Si Lom metro station.m4a"></audio></div>
+  <div class="tape"><h3>Muay Thai Between Rounds</h3><audio controls src="Muay thai round.m4a"></audio></div>
+  <div class="tape"><h3>Si Com Station</h3><audio controls src="Si Lom metro station.m4a"></audio></div>
   <div class="tape"><h3>The Sky Train</h3><audio controls src="Sky Train.m4a"></audio></div>
-  <div class="tape"><h3>Wat Arun, Temple of Dawn</h3><audio controls src="Wat Arun.m4a"></audio></div>
+  <div class="tape"><h3>Wat Arun Temple of Dawn</h3><audio controls src="Wat Arun.m4a"></audio></div>
+  <div class="tape"><h3>The Ferry Over</h3><audio controls src="Ferry.m4a"></audio></div>
+  <div class="tape"><h3>The Ferry Over 2</h3><audio controls src="Ferry 2.m4a"></audio></div>
  </div>
 </section>
 
@@ -174,16 +191,16 @@
   <div class="tape"><h3>Chanting at Wat Chedi Luang</h3><audio controls src="Chanting wat chedi.m4a"></audio></div>
   <div class="tape"><h3>Wat Chedi Luang</h3><audio controls src="Wat Chedi.m4a"></audio></div>
   <div class="tape"><h3>Thai Cooking Class</h3><audio controls src="Cooking class.m4a"></audio></div>
-  <div class="tape"><h3>Walking the Cooking School Grounds</h3><audio controls src="Walking around cooking class.m4a"></audio></div>
+  <div class="tape"><h3>Walking around the cooking class</h3><audio controls src="Walking around cooking class.m4a"></audio></div>
   <div class="tape"><h3>Doi Suthep National Park</h3><audio controls src="Doi suthep national park.m4a"></audio></div>
   <div class="tape"><h3>Wat Phra That Doi Suthep</h3><audio controls src="Wat Phra That Doi Suthep.m4a"></audio></div>
   <div class="tape"><h3>Elephant Sanctuary</h3><audio controls src="Elephant park 4.m4a"></audio></div>
   <div class="tape"><h3>Sunday Night Market</h3><audio controls src="Sunday night market.m4a"></audio></div>
-  <div class="tape"><h3>Sunday Market, from the Hotel Balcony</h3><audio controls src="Sunday night market from hotel.m4a"></audio></div>
+  <div class="tape"><h3>Sunday Market from the Hotel Balcony</h3><audio controls src="Sunday night market from hotel.m4a"></audio></div>
   <div class="tape"><h3>Thai Folk Band at the Market</h3><audio controls src="Thai folk band Chiang Mai Sunday night market.m4a"></audio></div>
   <div class="tape"><h3>Wat Phra Singh</h3><audio controls src="Wat singh.m4a"></audio></div>
-  <div class="tape"><h3>Songthaew Ride</h3><audio controls src="Songthaew.m4a"></audio></div>
-  <div class="tape"><h3>Songthaew, Another Ride</h3><audio controls src="Somgthaew.m4a"></audio></div>
+  <div class="tape"><h3>Songthaew</h3><audio controls src="Songthaew.m4a"></audio></div>
+  <div class="tape"><h3>Songthaew 2</h3><audio controls src="Somgthaew.m4a"></audio></div>
   <div class="tape"><h3>Street Market</h3><audio controls src="Street market.m4a"></audio></div>
  </div>
 </section>
@@ -196,13 +213,13 @@
     <h2>Chiang Rai</h2>
   </div>
 
-  <div class="tape"><h3>The Blue Temple</h3><audio controls src="Blue temple.m4a"></audio></div>
-  <div class="tape"><h3>The Blue Temple II</h3><audio controls src="Blue temple 2.m4a"></audio></div>
-  <div class="tape"><h3>Blue Temple — the Statue</h3><audio controls src="Blue temple statue.m4a"></audio></div>
-  <div class="tape"><h3>Outside the Blue Temple</h3><audio controls src="Outside blue temple.m4a"></audio></div>
-  <div class="tape"><h3>Chiang Rai, from the Balcony</h3><audio controls src="Chiang Rai balcony.m4a"></audio></div>
-  <div class="tape"><h3>Market Square — a Guitar Playing</h3><audio controls src="Chiang rai market square with guitar.m4a"></audio></div>
-  <div class="tape"><h3>Hey Jude, Chiang Rai</h3><audio controls src="Hey Jude chiang rai.m4a"></audio></div>
+  <div class="tape"><h3>Blue Temple</h3><audio controls src="Blue temple.m4a"></audio></div>
+  <div class="tape"><h3>Blue Temple 2</h3><audio controls src="Blue temple 2.m4a"></audio></div>
+  <div class="tape"><h3>Blue Temple Statue</h3><audio controls src="Blue temple statue.m4a"></audio></div>
+  <div class="tape"><h3>Outside Blue Temple</h3><audio controls src="Outside blue temple.m4a"></audio></div>
+  <div class="tape"><h3>Chiang Rai from the Balcony</h3><audio controls src="Chiang Rai balcony.m4a"></audio></div>
+  <div class="tape"><h3>Market Square Guitar Playing</h3><audio controls src="Chiang rai market square with guitar.m4a"></audio></div>
+  <div class="tape"><h3>Hey Jude Chiang Rai</h3><audio controls src="Hey Jude chiang rai.m4a"></audio></div>
  </div>
 </section>
 
@@ -216,11 +233,9 @@
 
   <div class="tape"><h3>The Big Buddha</h3><audio controls src="Big Buddha.m4a"></audio></div>
   <div class="tape"><h3>Bophut Beach</h3><audio controls src="Bophut beach.m4a"></audio></div>
-  <div class="tape"><h3>Bophut Beach II</h3><audio controls src="Bophut beach 2.m4a"></audio></div>
-  <div class="tape"><h3>Fisherman's Village by Day</h3><audio controls src="Fisherman's village daytime.m4a"></audio></div>
+  <div class="tape"><h3>Bophut Beach 2</h3><audio controls src="Bophut beach 2.m4a"></audio></div>
+  <div class="tape"><h3>Fisherman's Village</h3><audio controls src="Fisherman's village daytime.m4a"></audio></div>
   <div class="tape"><h3>Fisherman's Village Market</h3><audio controls src="Fisherman's village market.m4a"></audio></div>
-  <div class="tape"><h3>The Ferry Over</h3><audio controls src="Ferry.m4a"></audio></div>
-  <div class="tape"><h3>The Ferry Over II</h3><audio controls src="Ferry 2.m4a"></audio></div>
  </div>
 </section>
 
