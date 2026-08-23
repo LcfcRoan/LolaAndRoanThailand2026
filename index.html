@@ -69,43 +69,16 @@
     margin: 0.4rem 0 0.2rem;
   }
 
-  /* ---------- Location sections (photos crossfade into one another) ---------- */
+  /* ---------- Location sections (photo fills the whole section) ---------- */
   .location {
     position: relative;
     padding: 2.2rem 1.2rem 2.4rem;
   }
-  .location::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-  }
-  .location::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 1;
-  }
-  .location.bangkok::before   { background-image: var(--bangkok-photo), linear-gradient(135deg, var(--ink), #24404A); }
-  .location.chiangmai::before { background-image: var(--chiangmai-photo), linear-gradient(135deg, var(--jungle), #24402F); }
-  .location.chiangrai::before { background-image: var(--chiangrai-photo), linear-gradient(135deg, #2B4A63, var(--ink)); }
-  .location.samui::before     { background-image: var(--samui-photo), linear-gradient(135deg, var(--coral), #7A3324); }
-  .location.phangan::before   { background-image: var(--phangan-photo), linear-gradient(135deg, #1F3B3A, var(--ink)); }
-
-  /* Overlap each section onto the one before it, and fade its own photo in
-     from transparent across that overlap zone, so the previous photo shows
-     through underneath and dissolves into the new one. */
-  .location + .location {
-    margin-top: -160px;
-    padding-top: 3.6rem;
-  }
-  .location + .location::before {
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 200px);
-            mask-image: linear-gradient(to bottom, transparent 0, #000 200px);
-  }
+  .location.bangkok   { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--bangkok-photo), linear-gradient(135deg, var(--ink), #24404A); background-size: cover; background-position: center; }
+  .location.chiangmai { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--chiangmai-photo), linear-gradient(135deg, var(--jungle), #24402F); background-size: cover; background-position: center; }
+  .location.chiangrai { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--chiangrai-photo), linear-gradient(135deg, #2B4A63, var(--ink)); background-size: cover; background-position: center; }
+  .location.samui     { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--samui-photo), linear-gradient(135deg, var(--coral), #7A3324); background-size: cover; background-position: center; }
+  .location.phangan   { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), var(--phangan-photo), linear-gradient(135deg, #1F3B3A, var(--ink)); background-size: cover; background-position: center; }
 
   .location-inner {
     position: relative;
@@ -174,9 +147,9 @@
   <div class="tape"><h3>Muay Thai Between Rounds</h3><audio controls src="Muay thai round.m4a"></audio></div>
   <div class="tape"><h3>Si Com Station</h3><audio controls src="Si Lom metro station.m4a"></audio></div>
   <div class="tape"><h3>The Sky Train</h3><audio controls src="Sky Train.m4a"></audio></div>
-  <div class="tape"><h3>Wat Arun Temple of Dawn</h3><audio controls src="Wat Arun.m4a"></audio></div>
-  <div class="tape"><h3>The Ferry Over</h3><audio controls src="Ferry.m4a"></audio></div>
-  <div class="tape"><h3>The Ferry Over 2</h3><audio controls src="Ferry 2.m4a"></audio></div>
+  <div class="tape"><h3>Wat Arun</h3><audio controls src="Wat Arun.m4a"></audio></div>
+  <div class="tape"><h3>The Ferry Over to Wat Arun</h3><audio controls src="Ferry.m4a"></audio></div>
+  <div class="tape"><h3>The Ferry Over to Wat Arun 2</h3><audio controls src="Ferry 2.m4a"></audio></div>
  </div>
 </section>
 
