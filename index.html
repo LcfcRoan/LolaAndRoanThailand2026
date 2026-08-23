@@ -17,7 +17,7 @@
      ============================================================ */
   :root {
     --hero-photo:      url('IMG_4771.jpeg');
-    --bangkok-photo:   url('IMG_4563.jpeg');
+    --bangkok-photo:   url('IMG_4615.jpeg');
     --chiangmai-photo: url('IMG_4120.jpeg');
     --chiangrai-photo: url('IMG_4920.jpeg');
     --samui-photo:     url('IMG_5075.jpeg');
@@ -67,6 +67,13 @@
     font-size: clamp(2rem, 6vw, 3.2rem);
     font-weight: 600;
     margin: 0.4rem 0 0.2rem;
+    color: #ffffff;
+  }
+  .hero-sub {
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin: 0.3rem 0 0;
   }
 
   /* ---------- Location sections (photo fills the whole section) ---------- */
@@ -112,14 +119,6 @@
     height: 34px;
   }
 
-  footer {
-    text-align: center;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    color: #7A7264;
-    padding: 2.5rem 1rem 3rem;
-  }
-
   @media (prefers-reduced-motion: reduce) {
     .route { scroll-behavior: auto; }
   }
@@ -128,8 +127,8 @@
 <body>
 
 <section class="hero">
-  <div class="eyebrow">Thailand 2026</div>
-  <h1>Happy Birthday, Lola ❤️</h1>
+  <h1>Thailand Adventure 2026</h1>
+  <p class="hero-sub">Happy Birthday, Lola ❤️</p>
 </section>
 
 <!-- ============ BANGKOK ============ -->
@@ -150,6 +149,7 @@
   <div class="tape"><h3>Wat Arun</h3><audio controls src="Wat Arun.m4a"></audio></div>
   <div class="tape"><h3>The Ferry Over to Wat Arun</h3><audio controls src="Ferry.m4a"></audio></div>
   <div class="tape"><h3>The Ferry Over to Wat Arun 2</h3><audio controls src="Ferry 2.m4a"></audio></div>
+  <div class="tape"><h3>The Big Buddha</h3><audio controls src="Big Buddha.m4a"></audio></div>
  </div>
 </section>
 
@@ -204,7 +204,6 @@
     <h2>Koh Samui</h2>
   </div>
 
-  <div class="tape"><h3>The Big Buddha</h3><audio controls src="Big Buddha.m4a"></audio></div>
   <div class="tape"><h3>Bophut Beach</h3><audio controls src="Bophut beach.m4a"></audio></div>
   <div class="tape"><h3>Bophut Beach 2</h3><audio controls src="Bophut beach 2.m4a"></audio></div>
   <div class="tape"><h3>Fisherman's Village</h3><audio controls src="Fisherman's village daytime.m4a"></audio></div>
@@ -221,14 +220,12 @@
   </div>
 
   <div class="tape"><h3>Crickets at Night</h3><audio controls src="Crickets Koh Pha-Ngan.m4a"></audio></div>
-  <div class="tape"><h3>Jungle Animal Calls</h3><audio controls src="Koh Pha-Ngan animal sound.m4a"></audio></div>
+  <div class="tape"><h3>Strange animal noises</h3><audio controls src="Koh Pha-Ngan animal sound.m4a"></audio></div>
   <div class="tape"><h3>Koh Pha-Ngan Beach</h3><audio controls src="Koh Pha-Ngan beach.m4a"></audio></div>
   <div class="tape"><h3>Late Night</h3><audio controls src="Late night Koh Pha-Ngan.m4a"></audio></div>
   <div class="tape"><h3>Wires Buzzing Overhead</h3><audio controls src="Wires buzzing Koh Pha-Ngan.m4a"></audio></div>
  </div>
 </section>
-
-<footer>Lola &amp; Roan · Thailand · June 2026</footer>
 
 </body>
 </html>
